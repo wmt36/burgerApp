@@ -31,7 +31,7 @@ const orm = {
     },
 
     create: function(table, val, col, cb){
-        let queryString = 'INSERT INTO ' + table + ' (' + col.toString() + ') VALUES (?) ';
+        let queryString = 'INSERT INTO ' + table + ' (' + col.toString() + ' ) VALUES (?) ';
 
         console.log(queryString)
 

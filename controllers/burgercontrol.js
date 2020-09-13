@@ -19,14 +19,16 @@ router.get('/', function(req, res) {
 
 //allowing the usser the ablity to create new burgers by adding them tot he database
 router.post('/api/burgers', function(req, res) {
+    
     burger.create([
         'name', 'devoured'
     ], [
         req.body.name, req.body.devoured
-    ], function(result) {
+    ], function(res) {
         //giving each indiviudal burger an ID
         res.json({id: res.insertId})
     });
+    console.log(req.body, 'req.body')
 });
 
 
