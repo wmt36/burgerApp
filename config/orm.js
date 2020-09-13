@@ -1,18 +1,6 @@
 const connection = require('./connection');
 
 
-//function to make as many question marks needed for the querrys to come from the burger app
-function makeQmarks(num) {
-    const arr = []
-
-    for (let i = 0; i < num; i++){
-        arr.push('?')
-    }
-    return arr.toString();
-};
-
-
-
 //creating a functon that will allow all key value pairs from the object to be pushed into the arr
 function objToSql(ob){
     const arr = []
@@ -43,14 +31,7 @@ const orm = {
     },
 
     create: function(table, val, col, cb){
-        let queryString = `INSERT INTO ${table}`;
-
-        queryString += '(';
-        queryString += col.toString();
-        queryString += ') ';
-        queryString += 'VALUES (';
-        queryString += makeQmarks(val.length);
-        queryString += ') ';
+        let queryString = 'INSERT INTO ' + table + ' (' + col.toString() + ') VALUES (?) ';
 
         console.log(queryString)
 
@@ -62,9 +43,9 @@ const orm = {
     update: function(table, currentVal, condition, cb) {
         let queryString = `UPDATE ${table}`;
 
-        queryString += 'SET ';
+        queryString += ' SET ';
         queryString += objToSql(currentVal);
-        queryString += 'WHERE ';
+        queryString += ' WHERE ';
         queryString += condition;
 
         console.log(queryString);
@@ -75,7 +56,7 @@ const orm = {
 
     },
     delete: function(table, condition, cb) {
-        let queryString = `DELETE FROM ${table} WHERE ${condition};`;
+        let queryString = `DELETE FROM ${table} WHERE ${condition}`;
 
         connection.query(queryString, function(err, res) {
             if (err) throw err;

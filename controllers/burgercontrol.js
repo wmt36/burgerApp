@@ -33,9 +33,11 @@ router.post('/api/burgers', function(req, res) {
 //allowwing the user the ability to update code with specific id linked to specific burger
 //allso allows makingt he compute understand if no rows were edited then the opbject musnt exist
 router.put('/api/burgers/:id', function(req, res) {
-    let condition = 'id'+ req.params.id;
+    let condition = 'id='+ req.params.id;
+    console.log(condition, 'CONDITION');
+    console.log(req.body, 'REQ BODY');
     burger.update({
-        devoured: req.body.devoured
+        devoured: true
     }, condition,function(result) {
         if(result.changedRows === 0){
         return res.status(400).end();
@@ -48,9 +50,11 @@ router.put('/api/burgers/:id', function(req, res) {
 
 //setting up the delet function to all the user to delete seleted objects
 router.delete('/api/burgers/:id', function (req, res) {
-    let condition = id + req.params.id;
+    let condition = 'id=' + req.params.id;
+    console.log(condition, 'CONDITION');
+    console.log(req.params, 'REQ PARAM');
     router.delete(condition, function(result) {
-        if(results.rowsChanged == 0){
+        if(result.rowsChanged == 0){
             return res.status(404).end()
         } else {
             res.status(200).end();
