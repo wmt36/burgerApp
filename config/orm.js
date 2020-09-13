@@ -1,6 +1,18 @@
 const connection = require('./connection');
 
 
+//function to make as many question marks needed for the querrys to come from the burger app
+function makeQmarks(num) {
+    const arr = []
+
+    for (let i = 0; i < num; i++){
+        arr.push('?')
+    }
+    return arr.toString();
+};
+
+
+
 //creating a functon that will allow all key value pairs from the object to be pushed into the arr
 function objToSql(ob){
     const arr = []
@@ -29,17 +41,14 @@ const orm = {
             cb(res);
         });
     },
-
-    create: function(table, val, col, cb){
-        let queryString = 'INSERT INTO ' + table + ' (' + col.toString() + ' ) VALUES (?) ';
-
+    create: function(table, col, val, cb){
+        let queryString = 'INSERT INTO ' + table + ' (' + col.toString() + ') VALUES (?,?) ';
         console.log(queryString)
-
         connection.query(queryString, val, function(err, res) {
             if (err) throw err;
             cb(res);
         });
-    }, 
+    },
     update: function(table, currentVal, condition, cb) {
         let queryString = `UPDATE ${table}`;
 

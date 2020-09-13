@@ -19,7 +19,7 @@ $(document).ready(function(){
     }); 
     
 
-    $('.creat-from').on('submit', function(e) {
+    $('.create-from').on('submit', function(e) {
         e.preventDefault();
         const newBurger = {
             name: $('#patty').val(),
