@@ -19,8 +19,8 @@ $(document).ready(function(){
     }); 
     
 
-    $('.create-from').on('submit', function(e) {
-        e.preventDefault();
+    $('.create-form').on('submit', function(e) {
+        
         const newBurger = {
             name: $('#patty').val(),
             devoured: $('[name=devoured]:checked').val().trim()
@@ -35,7 +35,7 @@ $(document).ready(function(){
     });
 
     $('.trash-burger').on('click', function(e) {
-        e.preventDefault();
+        
         const id = $(this).data('id')
 
         $.ajax(`/api/burgers/${id}`, {

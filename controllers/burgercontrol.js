@@ -18,14 +18,14 @@ router.get('/', function(req, res) {
 
 
 //allowing the usser the ablity to create new burgers by adding them tot he database
-router.post('/api/burgers', function(req, res) {
-    
+router.post('/api/burgers', function(req, res) {    
     burger.create([
         'name', 'devoured'
     ], [
         req.body.name, req.body.devoured
-    ], function(res) {
+    ], function(results) {
         //giving each indiviudal burger an ID
+        console.log(results)
         res.json({id: res.insertId})
     });
     console.log(req.body, 'req.body')
@@ -52,10 +52,10 @@ router.put('/api/burgers/:id', function(req, res) {
 
 //setting up the delet function to all the user to delete seleted objects
 router.delete('/api/burgers/:id', function (req, res) {
-    let condition = 'id=' + req.params.id;
+    let condition = 'id = ' + req.params.id;
     console.log(condition, 'CONDITION');
     console.log(req.params, 'REQ PARAM');
-    router.delete(condition, function(result) {
+    burger.delete(condition, function(result) {
         if(result.rowsChanged == 0){
             return res.status(404).end()
         } else {
