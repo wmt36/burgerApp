@@ -1,7 +1,7 @@
 const express = require("express");
 
 const PORT = process.env.PORT || 3300;
-
+require('dotenv').config()
 const app = express();
 
 // Serve static content for the app from the "public" directory in the application directory.
