@@ -1,38 +1,47 @@
 <h1>Burger Time!!</h1>
+<img src="https://i.imgur.com/yj5S4Zy.png" alt="Bacconnator">
+<div class="container">
+  <div class="row">
+    <div class="col-md-">
+      <h2>Burgers that are still cooling down!</h2>
 
-<h2>Burgers that are still cooling down!</h2>
-
-<ul>
-    {{#each burgers}}
-      {{#unless devoured}}
+      <ul>
+        {{#each burgers}}
+        {{#unless devoured}}
         {{> burgers/burgers devoured=true}}
-      {{/unless}}
-    {{/each}}
-</ul>
+        {{/unless}}
+        {{/each}}
+      </ul>
+    </div>
+    <div class="col-md-4">
+      <h2>Devoured burgers!</h2>
 
-<h2>Devoured burgers!</h2>
-
-<ul>
-    {{#each burgers}}
-      {{#if devoured}}
+      <ul>
+        {{#each burgers}}
+        {{#if devoured}}
         {{> burgers/burgers devoured=flase}}
-      {{/if}}
-    {{/each}}
-</ul>
- 
-<h2>Create your own Burger!</h2>
-
-<form class="create-form">
-
-<div class="input-group">
-    <label for="patty">Name your master peice</label>
-    <input type="text" id="patty" name="name">
+        {{/if}}
+        {{/each}}
+      </ul>
+    </div>
+  </div>
 </div>
 
-<div class="input_group">
-    <label for="devoured">That burger sounds delcious!</label> <br>
-    <input type="radio" name="devoured" value="1" checked> Devoure your masterpeace!<br>
-    <input type="radio" name="devoured" value="0"> Let your burger cool down?
-</div>
-<button type="submit">Add new Burger</button>
-</form> 
+  <div class="row">
+    <h2>Create your own Burger!</h2>
+
+    <form class="create-form">
+
+      <div class="input-group">
+        <label for="patty">Name your master peice</label>
+        <input type="text" id="patty" name="name">
+      </div>
+
+      <div class="input_group">
+        <label for="devoured">Would you like to eat your burger or let it cool down?</label> <br>
+        <input type="radio" name="devoured" value="1" checked> Devoure your masterpeace!<br>
+        <input type="radio" name="devoured" value="0"> Let your burger cool down?
+      </div>
+      <button type="submit">Add new Burger</button>
+    </form>
+  </div>

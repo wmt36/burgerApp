@@ -1,4 +1,7 @@
 $(document).ready(function(){
+    
+
+
     $('.devour-burger').on("click", function(e) {
         e.preventDefault();
 
@@ -20,7 +23,7 @@ $(document).ready(function(){
     
 
     $('.create-form').on('submit', function(e) {
-        
+       
         const newBurger = {
             name: $('#patty').val(),
             devoured: $('[name=devoured]:checked').val().trim()
